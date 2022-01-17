@@ -9,11 +9,10 @@ public class StatsService {
         return sum;
     }
     public long calculateAvgSum(long[] sales) {
-        long sum = 0;
+        long sum=calculateSum(sales);
         long monthQuantity=0;
         long avgSum=0;
         for (long sale : sales) {
-            sum += sale;
             monthQuantity=monthQuantity+1;
         }
         avgSum=sum/monthQuantity;
@@ -44,14 +43,7 @@ public class StatsService {
         return maxMonth + 1;
     }
     public long monthQuantitySalesBelowAverage(long[] sales) {
-        long sum = 0;
-        long monthQuantity=0;
-        long avgSum=0;
-        for (long sale : sales) {
-            sum += sale;
-            monthQuantity=monthQuantity+1;
-        }
-        avgSum = sum / monthQuantity;
+        long avgSum = calculateAvgSum(sales);
         long monthQuantitySalesBelowAverage = 0;
         for (long sale : sales) {
             if (sale < avgSum) {
@@ -61,14 +53,7 @@ public class StatsService {
         return monthQuantitySalesBelowAverage;
     }
     public long monthQuantitySalesAboveAverage(long[] sales) {
-        long sum = 0;
-        long monthQuantity=0;
-        long avgSum=0;
-        for (long sale : sales) {
-            sum += sale;
-            monthQuantity=monthQuantity+1;
-        }
-        avgSum = sum / monthQuantity;
+        long avgSum = calculateAvgSum(sales);
         long monthQuantitySalesAboveAverage = 0;
         for (long sale : sales) {
             if (sale < avgSum) {
